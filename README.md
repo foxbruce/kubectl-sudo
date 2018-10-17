@@ -56,10 +56,12 @@ of how to provide a sudo like system for kubernetes access.
 
 To reduce the surface of unwanted or unexpected actions you can reduce the default priviledges
 a cluster administrator has to the level of an unpriviledged account and give them the ability to impersonate users and groups.
-When cluster administrators needs to do more priviledged actions they can switch
+When cluster administrators need to do more priviledged actions, they can switch
 the group to `system:masters` or another group or user according to the needed privilidge level.
 
-In order to implement that, you need to declare a `ClusterRole` for [impersonation](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#user-impersonation):
+In order to implement that concept, you need to declare a `ClusterRole` for
+[impersonation](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#user-impersonation):
+
 ```yaml
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -95,7 +97,7 @@ Any user which has the group `bofh_accounts` can now do administration tasks wit
 kubectl --as=$USER --as-group=system:masters delete node kubelet3.example.com
 ```
 
-The provided kubectl plugin is a wrapper for kubectl to shorten the `--as` and `--as-group` part.
+The provided kubectl plugin is just a wrapper for `kubectl` to shorten the `--as` and `--as-group` part.
 
 ## Installation
 Place [kubectl-sudo](bash/kubectl-sudo) anywhere in your `$PATH` with execute permissions.
