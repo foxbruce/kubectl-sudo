@@ -1,4 +1,18 @@
 # kubectl sudo
+
+## TL;DR
+```bash
+$ kubectl get nodes
+Error from server (Forbidden): nodes is forbidden: User "bofh" cannot list nodes at the cluster scope
+```
+
+```bash
+$ kubectl sudo get nodes
+NAME                     STATUS   ROLES    AGE   VERSION
+kubelet1.example.com     Ready    <none>   96d   v1.11.2
+kubelet2.example.com     Ready    <none>   96d   v1.11.2
+```
+
 This project does not really introduce a kubectl plugin but a concept
 of how to provide a sudo like system for kubernetes access.
 
